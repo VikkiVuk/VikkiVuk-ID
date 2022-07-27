@@ -1,0 +1,40 @@
+.security-key-container {
+  width: auto;
+  height: auto;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  margin-right: 3%;
+  flex-direction: column;
+}
+.security-key-container1 {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.security-key-text {
+  color: #bdb9b9;
+  font-size: 1.4em;
+  align-self: center;
+}
+.security-key-button {
+  color: #ffffff;
+  width: auto;
+  align-self: center;
+  font-style: normal;
+  margin-top: 5%;
+  text-align: center;
+  transition: 0.3s;
+  font-family: Roboto;
+  font-weight: 500;
+  border-color: #C93042;
+  border-width: 2px;
+  border-radius: var(--dl-radius-radius-radius8);
+  background-color: transparent;
+}
+.security-key-button:hover {
+  background-color: #C93042;
+}
+
+

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <title>Log in to your ID</title>
+    <meta
+      property="og:description"
+      content="Already have an ID? Please login in order to continue using our services and to authorize apps that require you to have an ID."
+    />
+    <meta property="og:title" content="Log in to your ID" />
+    <meta
+      name="description"
+      content="Already have an ID? Please login in order to continue using our services and to authorize apps that require you to have an ID."
+    />
+    <meta property="og:title" content="Connections - VikkiVuk ID" />
+    <meta property="og:title" content="AuthorizedApps - VikkiVuk ID" />
+    <meta
+      property="og:description"
+      content="Continue resetting your password."
+    />
+    <meta property="og:title" content="Reset Password LS" />
+    <meta name="description" content="Continue resetting your password." />
+    <meta
+      property="og:description"
+      content="Don't have an ID? No worries! Just create one, today, for free."
+    />
+    <meta property="og:title" content="Create an ID" />
+    <meta
+      name="description"
+      content="Don't have an ID? No worries! Just create one, today, for free."
+    />
+    <meta property="og:title" content="ComingSoon - VikkiVuk ID" />
+    <meta property="og:title" content="Profile - VikkiVuk ID" />
+    <meta property="og:title" content="MyID - VikkiVuk ID" />
+    <meta
+      property="og:description"
+      content="Forgot your password? No worries, just enter your email and we'll send a link to reset your password!"
+    />
+    <meta property="og:title" content="Reset your password" />
+    <meta
+      name="description"
+      content="Forgot your password? No worries, just enter your email and we'll send a link to reset your password!"
+    />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <style>
+      html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6 {  margin: 0;  padding: 0;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}a {  color: inherit;  text-decoration: inherit;}input {  padding: 2px 4px;}img {  display: block;}
+    </style>
+    <style>
+      html {
+        font-family: Inter;
+        font-size: 16px;
+      }
+
+      body {
+        font-weight: 400;
+        font-style:normal;
+        text-decoration: none;
+        text-transform: none;
+        letter-spacing: normal;
+        line-height: 1.15;
+        color: var(--dl-color-gray-black);
+        background-color: var(--dl-color-gray-white);
+
+      }
+    </style>
+    <link rel="icon" href="/favicon.ico"/>
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.js"
+      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.rawgit.com/placemarker/jQuery-MD5/master/jquery.md5.js"></script>
+    
+    <style>
+      /* Chrome, Safari, Edge, Opera */
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      /* Firefox */
+      input[type=number] {
+        -moz-appearance: textfield;
+      }
+    </style>
+
+    <style>
+      .submit--loading .button__text {
+        visibility: hidden;
+        opacity: 0;
+      }
+
+      .submit--loading::after {
+        content: "";
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        border: 4px solid transparent;
+        border-top-color: #ffffff;
+        border-radius: 50%;
+        animation: button-loading-spinner 1s ease infinite;
+      }
+
+      @keyframes button-loading-spinner {
+        from {
+          transform: rotate(0turn);
+        }
+
+        to {
+          transform: rotate(1turn);
+        }
+      }
+    </style>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./login.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie"></script>
+  </head>
+    <body>
+    <div>
+      <link href="./login.css" rel="stylesheet" />
+
+      <div class="login-container">
+        <div class="login-container1">
+          <form
+            id="form"
+            name="login-form"
+            action="/login"
+            method="POST"
+            target="self"
+            autocomplete="on"
+            class="login-form"
+          >
+            <h1 class="login-text notselectable">Log in to your ID</h1>
+            <div class="login-container2">
+              <span class="login-text1 notselectable">Username or Email</span>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                pattern=".+@gmail.com"
+                required="true"
+                autofocus="true"
+                minlength="5"
+                autocomplete="email"
+                class="login-textinput input"
+              />
+            </div>
+            <div class="login-container3">
+              <span class="login-text2 notselectable">Password</span>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                required="true"
+                autofocus="true"
+                maxlength="20"
+                minlength="3"
+                autocomplete="current-password"
+                class="login-textinput1 input"
+              />
+            </div>
+            <button
+              id="submit"
+              type="button"
+              onclick="this.classList.toggle('submit--loading')"
+              class="login-button button"
+            >
+              <span class="login-text3 button__text">Login</span>
+            </button>
+            <a href="reset-password.html" class="login-navlink">
+              Forgot your password?
+            </a>
+            <div class="login-container4"></div>
+            <div class="login-container5">
+              <span class="login-text4 notselectable">
+                Don&apos;t have an ID?
+              </span>
+              <a href="register.html" class="login-navlink1">
+                <span>Create one.</span>
+              </a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+  
+    <script>
+      function spamStop() {
+        console.log(`
+
+
+           .d8888b.  888                       888    
+          d88P  Y88b 888                       888    
+          Y88b.      888                       888    This is a browser feature intended for 
+           "Y888b.   888888  .d88b.  88888b.   888    developers. If someone told you to copy-paste 
+              "Y88b. 888    d88""88b 888 "88b  888    something here to enable a feature 
+                "888 888    888  888 888  888  Y8P    or "hack" someone's ID, it is a 
+          Y88b  d88P Y88b.  Y88..88P 888 d88P         scam and will give them access to your 
+           "Y8888P"   "Y888  "Y88P"  88888P"   888    ID.
+                                     888              
+                                     888              
+                                     888              
+      `)
+        console.log(`
+
+
+           .d8888b.  888                       888    
+          d88P  Y88b 888                       888    
+          Y88b.      888                       888    This is a browser feature intended for 
+           "Y888b.   888888  .d88b.  88888b.   888    developers. If someone told you to copy-paste 
+              "Y88b. 888    d88""88b 888 "88b  888    something here to enable a feature 
+                "888 888    888  888 888  888  Y8P    or "hack" someone's ID, it is a 
+          Y88b  d88P Y88b.  Y88..88P 888 d88P         scam and will give them access to your 
+           "Y8888P"   "Y888  "Y88P"  88888P"   888    ID.
+                                     888              
+                                     888              
+                                     888              
+      `)
+        console.log(`
+
+
+           .d8888b.  888                       888    
+          d88P  Y88b 888                       888    
+          Y88b.      888                       888    This is a browser feature intended for 
+           "Y888b.   888888  .d88b.  88888b.   888    developers. If someone told you to copy-paste 
+              "Y88b. 888    d88""88b 888 "88b  888    something here to enable a feature 
+                "888 888    888  888 888  888  Y8P    or "hack" someone's ID, it is a 
+          Y88b  d88P Y88b.  Y88..88P 888 d88P         scam and will give them access to your 
+           "Y8888P"   "Y888  "Y88P"  88888P"   888    ID.
+                                     888              
+                                     888              
+                                     888              
+      `)
+        console.log(`
+
+
+           .d8888b.  888                       888    
+          d88P  Y88b 888                       888    
+          Y88b.      888                       888    This is a browser feature intended for 
+           "Y888b.   888888  .d88b.  88888b.   888    developers. If someone told you to copy-paste 
+              "Y88b. 888    d88""88b 888 "88b  888    something here to enable a feature 
+                "888 888    888  888 888  888  Y8P    or "hack" someone's ID, it is a 
+          Y88b  d88P Y88b.  Y88..88P 888 d88P         scam and will give them access to your 
+           "Y8888P"   "Y888  "Y88P"  88888P"   888    ID.
+                                     888              
+                                     888              
+                                     888              
+      `)
+        console.log(`
+
+
+           .d8888b.  888                       888    
+          d88P  Y88b 888                       888    
+          Y88b.      888                       888    This is a browser feature intended for 
+           "Y888b.   888888  .d88b.  88888b.   888    developers. If someone told you to copy-paste 
+              "Y88b. 888    d88""88b 888 "88b  888    something here to enable a feature 
+                "888 888    888  888 888  888  Y8P    or "hack" someone's ID, it is a 
+          Y88b  d88P Y88b.  Y88..88P 888 d88P         scam and will give them access to your 
+           "Y8888P"   "Y888  "Y88P"  88888P"   888    ID.
+                                     888              
+                                     888              
+                                     888              
+      `)
+    }
+    spamStop()
+  </script>
+</html>

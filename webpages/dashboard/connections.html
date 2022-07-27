@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <title>Connections</title>
+    <meta property="og:title" content="Connections" />
+    <meta property="og:title" content="Authorized Apps" />
+    <meta
+      property="og:description"
+      content="Continue resetting your password."
+    />
+    <meta property="og:title" content="Reset Password LS" />
+    <meta name="description" content="Continue resetting your password." />
+    <meta
+      property="og:description"
+      content="Don't have an account? No worries! Just create one, today, for free."
+    />
+    <meta property="og:title" content="Create an Account" />
+    <meta
+      name="description"
+      content="Don't have an account? No worries! Just create one, today, for free."
+    />
+    <meta property="og:title" content="Coming Soon" />
+    <meta property="og:title" content="Profile" />
+    <meta property="og:title" content="My Account" />
+    <meta
+      property="og:description"
+      content="Forgot your password? No worries, just enter your email and we'll send a link to reset your password!"
+    />
+    <meta property="og:title" content="Reset your password" />
+    <meta
+      name="description"
+      content="Forgot your password? No worries, just enter your email and we'll send a link to reset your password!"
+    />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <style>
+      html {
+        line-height: 1.15;
+      }
+      body {
+        margin: 0;
+      }
+      * {
+        box-sizing: border-box;
+        border-width: 0;
+        border-style: solid;
+      }
+      p,
+      li,
+      ul,
+      pre,
+      div,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        margin: 0;
+        padding: 0;
+      }
+      button,
+      input,
+      optgroup,
+      select,
+      textarea {
+        font-family: inherit;
+        font-size: 100%;
+        line-height: 1.15;
+        margin: 0;
+      }
+      button,
+      select {
+        text-transform: none;
+      }
+      button,
+      [type="button"],
+      [type="reset"],
+      [type="submit"] {
+        -webkit-appearance: button;
+      }
+      button::-moz-focus-inner,
+      [type="button"]::-moz-focus-inner,
+      [type="reset"]::-moz-focus-inner,
+      [type="submit"]::-moz-focus-inner {
+        border-style: none;
+        padding: 0;
+      }
+      button:-moz-focus,
+      [type="button"]:-moz-focus,
+      [type="reset"]:-moz-focus,
+      [type="submit"]:-moz-focus {
+        outline: 1px dotted ButtonText;
+      }
+      a {
+        color: inherit;
+        text-decoration: inherit;
+      }
+      input {
+        padding: 2px 4px;
+      }
+      img {
+        display: block;
+      }
+    </style>
+    <style>
+      html {
+        font-family: Inter;
+        font-size: 16px;
+      }
+
+      body {
+        font-weight: 400;
+        font-style: normal;
+        text-decoration: none;
+        text-transform: none;
+        letter-spacing: normal;
+        line-height: 1.15;
+        color: var(--dl-color-gray-black);
+        background-color: var(--dl-color-gray-white);
+      }
+    </style>
+    <link rel="icon" href="../favicon.ico"/>
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.js"
+      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.rawgit.com/placemarker/jQuery-MD5/master/jquery.md5.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie"></script>
+    
+    <style>
+      /* Chrome, Safari, Edge, Opera */
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      /* Firefox */
+      input[type="number"] {
+        -moz-appearance: textfield;
+      }
+    </style>
+
+    <style>
+      .submit--loading .button__text {
+        visibility: hidden;
+        opacity: 0;
+      }
+
+      .submit--loading::after {
+        content: "";
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        border: 4px solid transparent;
+        border-top-color: #ffffff;
+        border-radius: 50%;
+        animation: button-loading-spinner 1s ease infinite;
+      }
+
+      @keyframes button-loading-spinner {
+        from {
+          transform: rotate(0turn);
+        }
+
+        to {
+          transform: rotate(1turn);
+        }
+      }
+    </style>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./connections.js"></script>
+    
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '545389207002464',
+          cookie     : true,
+          xfbml      : true,
+          version    : 'v13.0'
+        });
+
+        FB.AppEvents.logPageView();   
+
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "https://connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+  </head>
+  <body>
+    <div>
+      <link href="./connections.css" rel="stylesheet" />
+
+      <div class="connections-container">
+        <a
+          href="https://id.vikkivuk.xyz/"
+          target="_self"
+          rel="noreferrer noopener"
+          class="connections-logout button"
+        >
+          &lt;- Home
+        </a>
+        <div class="connections-main">
+          <div class="connections-content" id="bruhidk">
+            <h1 class="connections-text notselectable">Connections</h1>
+            <div class="connections-container1">
+              <span class="connections-text01 notselectable">
+                CONNECT YOUR ACCOUNTS
+              </span>
+              <div class="connections-container2">
+                <button
+                  onlogin="onFBLogin()"
+                  onclick="fbLogin()"
+                  scope="public_profile,email"
+                  class="fb-login-button connections-link button"
+                >
+                  <img
+                    alt="image"
+                    src="https://www.socialmediabutterflyblog.com/wp-content/uploads/sites/567/2021/01/Facebook-logo-500x350-1.png"
+                    loading="eager"
+                    class="connections-image"
+                  />
+                </button>
+                <a
+                  id="github"
+                  href="https://github.com/login/oauth/authorize?client_id=da3e1df049fa4a8a931a&allow_signup=true&scope=read:user+user:email&state=jwt"
+                  target="_self"
+                  rel="noreferrer noopener"
+                  class="connections-link1 button"
+                >
+                  <img
+                    alt="image"
+                    src="https://cdn.glitch.global/ff3fc2c0-c60a-47f0-a6a1-d1932dbc2a03/github.png?v=1652550848213"
+                    class="connections-image1"
+                  />
+                </a>
+                <a
+                  id="reddit"
+                  href="https://www.reddit.com/api/v1/authorize?client_id=wsMh_rtkmOE3YjLbaiBdAg&response_type=code&state=jwt&duration=permanent&scope=identity+mysubreddits&redirect_uri=https://id.vikkivuk.xyz/connections/reddit/callback"
+                  target="_self"
+                  rel="noreferrer noopener"
+                  class="connections-link2 button"
+                >
+                  <img
+                    alt="image"
+                    src="https://www.iconpacks.net/icons/2/free-reddit-logo-icon-2436-thumb.png"
+                    class="connections-image2"
+                  />
+                </a>
+                <a
+                  id="steam"
+                  href="https://id.vikkivuk.xyz/connections/steam"
+                  target="_self"
+                  rel="noreferrer noopener"
+                  class="connections-link3 button"
+                >
+                  <img
+                    alt="image"
+                    src="https://cdn.glitch.global/ff3fc2c0-c60a-47f0-a6a1-d1932dbc2a03/steam.png?v=1652550856148"
+                    class="connections-image3"
+                  />
+                </a>
+                <a
+                  id="youtube"
+                  href="https://accounts.google.com/o/oauth2/v2/auth?client_id=435554639611-veb22lbqgkcaf40bmrfqo29qv4psf0si.apps.googleusercontent.com&redirect_uri=https://id.vikkivuk.xyz/connections/google/callback&response_type=token&scope=profile+email+openid+https://www.googleapis.com/auth/youtube.readonly&state=jwt"
+                  target="_self"
+                  rel="noreferrer noopener"
+                  class="connections-link5 button"
+                >
+                  <img
+                    alt="image"
+                    src="https://cdn.glitch.global/ff3fc2c0-c60a-47f0-a6a1-d1932dbc2a03/youtube.png?v=1652550860224"
+                    class="connections-image5"
+                  />
+                </a>
+                <a
+                  id="twitch"
+                  href="https://accounts.twitch.tv/oauth2/authorize?client_id=o93fsppxqbsfoefl0oaep323mlqn5l&redirect_uri=https://id.vikkivuk.xyz/connections/twitch/callback&response_type=token+id_token&scope=openid&state=jwt"
+                  target="_self"
+                  rel="noreferrer noopener"
+                  class="connections-link6 button"
+                >
+                  <img
+                    alt="image"
+                    src="https://cdn.glitch.global/ff3fc2c0-c60a-47f0-a6a1-d1932dbc2a03/twitch.png?v=1652550942504"
+                    class="connections-image6"
+                  />
+                </a>
+                <a
+                  id="discord"
+                  href="https://discord.com/api/oauth2/authorize?client_id=975161504703840258&redirect_uri=https%3A%2F%2Fid.vikkivuk.xyz%2Fconnections%2Fdiscord%2Fcallback&response_type=code&scope=identify%20email&state=jwt"
+                  target="_self"
+                  rel="noreferrer noopener"
+                  class="connections-link7 button"
+                >
+                  <img
+                    alt="image"
+                    src="https://cdn.glitch.global/ff3fc2c0-c60a-47f0-a6a1-d1932dbc2a03/discord.png?v=1652550843864"
+                    class="connections-image7"
+                  />
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="connections-user-settings">
+            <span class="connections-text02 notselectable">USER SETTINGS</span>
+            <a href="my-account.html" class="connections-navlink button">
+              My Account
+            </a>
+            <a href="profile.html" class="connections-navlink1 button">
+              Profile
+            </a>
+            <a href="security.html" class="connections-navlink2 button">
+              Privacy & Security
+            </a>
+            <a href="authorized-apps.html" class="connections-navlink3 button">
+              Authorized Apps
+            </a>
+            <button class="connections-button button">Connections</button>
+          </div>
+          <div class="connections-billing">
+            <span class="connections-text03 notselectable">BILLING</span>
+            <a href="premium.html" class="connections-navlink4 button">
+              Premium
+            </a>
+            <a href="wallet.html" class="connections-navlink6 button">
+              Wallet
+            </a>
+            <a href="coming-soon.html" class="connections-navlink7 button">
+              My Card
+            </a>
+          </div>
+        </div>
+        <div class="connections-screen-sizew">
+          <h1 class="connections-text04 notselectable">
+            <span class="connections-text05">Sorry but...</span>
+          </h1>
+          <h1 class="connections-text06">
+            <span>
+              So sorry, but currently we only support Desktop or any Desktop
+              Sized Screen,
+            </span>
+            <br />
+            <span>
+              this is due to overflow and rendering issues, this might be
+              removed in the future.
+            </span>
+          </h1>
+          <a
+            href="https://id.vikkivuk.xyz/r/home?check=false"
+            target="_blank"
+            rel="noreferrer noopener"
+            class="connections-link8 button"
+          >
+            Go Home
+          </a>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    function spamStop() {
+      console.log(`
+
+
+           .d8888b.  888                       888    
+          d88P  Y88b 888                       888    
+          Y88b.      888                       888    This is a browser feature intended for 
+           "Y888b.   888888  .d88b.  88888b.   888    developers. If someone told you to copy-paste 
+              "Y88b. 888    d88""88b 888 "88b  888    something here to enable a feature 
+                "888 888    888  888 888  888  Y8P    or "hack" someone's account, it is a 
+          Y88b  d88P Y88b.  Y88..88P 888 d88P         scam and will give them access to your 
+           "Y8888P"   "Y888  "Y88P"  88888P"   888    account.
+                                     888              
+                                     888              
+                                     888              
+      `);
+      console.log(`
+
+
+           .d8888b.  888                       888    
+          d88P  Y88b 888                       888    
+          Y88b.      888                       888    This is a browser feature intended for 
+           "Y888b.   888888  .d88b.  88888b.   888    developers. If someone told you to copy-paste 
+              "Y88b. 888    d88""88b 888 "88b  888    something here to enable a feature 
+                "888 888    888  888 888  888  Y8P    or "hack" someone's account, it is a 
+          Y88b  d88P Y88b.  Y88..88P 888 d88P         scam and will give them access to your 
+           "Y8888P"   "Y888  "Y88P"  88888P"   888    account.
+                                     888              
+                                     888              
+                                     888              
+      `);
+      console.log(`
+
+
+           .d8888b.  888                       888    
+          d88P  Y88b 888                       888    
+          Y88b.      888                       888    This is a browser feature intended for 
+           "Y888b.   888888  .d88b.  88888b.   888    developers. If someone told you to copy-paste 
+              "Y88b. 888    d88""88b 888 "88b  888    something here to enable a feature 
+                "888 888    888  888 888  888  Y8P    or "hack" someone's account, it is a 
+          Y88b  d88P Y88b.  Y88..88P 888 d88P         scam and will give them access to your 
+           "Y8888P"   "Y888  "Y88P"  88888P"   888    account.
+                                     888              
+                                     888              
+                                     888              
+      `);
+      console.log(`
+
+
+           .d8888b.  888                       888    
+          d88P  Y88b 888                       888    
+          Y88b.      888                       888    This is a browser feature intended for 
+           "Y888b.   888888  .d88b.  88888b.   888    developers. If someone told you to copy-paste 
+              "Y88b. 888    d88""88b 888 "88b  888    something here to enable a feature 
+                "888 888    888  888 888  888  Y8P    or "hack" someone's account, it is a 
+          Y88b  d88P Y88b.  Y88..88P 888 d88P         scam and will give them access to your 
+           "Y8888P"   "Y888  "Y88P"  88888P"   888    account.
+                                     888              
+                                     888              
+                                     888              
+      `);
+      console.log(`
+
+
+           .d8888b.  888                       888    
+          d88P  Y88b 888                       888    
+          Y88b.      888                       888    This is a browser feature intended for 
+           "Y888b.   888888  .d88b.  88888b.   888    developers. If someone told you to copy-paste 
+              "Y88b. 888    d88""88b 888 "88b  888    something here to enable a feature 
+                "888 888    888  888 888  888  Y8P    or "hack" someone's account, it is a 
+          Y88b  d88P Y88b.  Y88..88P 888 d88P         scam and will give them access to your 
+           "Y8888P"   "Y888  "Y88P"  88888P"   888    account.
+                                     888              
+                                     888              
+                                     888              
+      `);
+    }
+    spamStop();
+  </script>
+</html>

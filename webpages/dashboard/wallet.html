@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <title>Wallet</title>
+    <meta
+      property="og:description"
+      content="Add money to your account so you can pay using our paying service VikkiVuk Pay"
+    />
+    <meta property="og:title" content="Wallet" />
+    <meta
+      name="description"
+      content="Add money to your account so you can pay using our paying service VikkiVuk Pay"
+    />
+    <meta property="og:title" content="Profile - VikkiVuk Accounts" />
+    <meta property="og:title" content="Premium - VikkiVuk Accounts" />
+    <meta property="og:title" content="MyAccount - VikkiVuk Accounts" />
+    <meta
+      property="og:description"
+      content="Forgot your password? No worries, just enter your email and we'll send a link to reset your password!"
+    />
+    <meta property="og:title" content="Reset your password" />
+    <meta
+      name="description"
+      content="Forgot your password? No worries, just enter your email and we'll send a link to reset your password!"
+    />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <style data-tag="reset-style-sheet">
+      html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6 {  margin: 0;  padding: 0;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}a {  color: inherit;  text-decoration: inherit;}input {  padding: 2px 4px;}img {  display: block;}
+    </style>
+    <style data-tag="default-style-sheet">
+      html {
+        font-family: Inter;
+        font-size: 16px;
+      }
+
+      body {
+        font-weight: 400;
+        font-style:normal;
+        text-decoration: none;
+        text-transform: none;
+        letter-spacing: normal;
+        line-height: 1.15;
+        color: var(--dl-color-gray-black);
+        background-color: var(--dl-color-gray-white);
+
+      }
+    </style>
+    <link rel="icon" href="/favicon.ico"/>
+    
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      data-tag="font"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.js"
+      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.rawgit.com/placemarker/jQuery-MD5/master/jquery.md5.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie"></script>
+
+    <style>
+      /* Chrome, Safari, Edge, Opera */
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      /* Firefox */
+      input[type=number] {
+        -moz-appearance: textfield;
+      }
+    </style>
+
+    <style>
+      .submit--loading .button__text {
+        visibility: hidden;
+        opacity: 0;
+      }
+
+      .submit--loading::after {
+        content: "";
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        border: 4px solid transparent;
+        border-top-color: #ffffff;
+        border-radius: 50%;
+        animation: button-loading-spinner 1s ease infinite;
+      }
+
+      @keyframes button-loading-spinner {
+        from {
+          transform: rotate(0turn);
+        }
+
+        to {
+          transform: rotate(1turn);
+        }
+      }
+
+      input[type="color"]:first-child {
+        padding: 0;
+        margin: 0;
+        border: none;
+        box-shadow: none;
+        border-radius: 100px;
+        background: none;
+        margin-bottom: 20px;
+      }
+
+      input[type="color"]::-webkit-color-swatch-wrapper {
+        padding: 0;
+      }
+
+      input[type="color"]::-webkit-color-swatch {
+        border: none;border-radius:4px;
+      }
+
+      input[type="color"]:nth-child(2) {
+        padding: 0;
+        margin: 0;
+        border: none;
+        box-shadow: none;
+        border-radius: 100px;
+        background: #f0bc12;
+        outline: none;
+      }
+
+      input[type="color" i] {
+        border-radius: 4px;
+        border: none;
+        height: 40px;
+        width: 100px;
+        display: block;
+      }
+    </style>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./wallet.js"></script>
+  </head>
+  <body>
+    <div>
+      <link href="./wallet.css" rel="stylesheet" />
+
+      <div class="wallet-container">
+        <a
+          href="https://accounts.vikkivuk.xyz/r/home?check=false"
+          target="_blank"
+          rel="noreferrer noopener"
+          class="wallet-logout button"
+        >
+          &lt;- Home
+        </a>
+        <div class="wallet-main">
+          <div class="wallet-content">
+            <h1 class="wallet-text notselectable">Wallet</h1>
+            <div class="wallet-container1">
+              <h1 id="profile-username" class="wallet-text01 notselectable">
+                BALANCE
+              </h1>
+              <h1 id="balance" class="wallet-text02 notselectable">
+                $0
+              </h1>
+            </div>
+            <button type="button" id="add_balance" class="wallet-save button">
+              Add Balance
+            </button>
+            <span class="wallet-text03 notselectable">
+              All payments are final and non-refundable. You can only use
+              VikkiVuk eMoney on services supported by it.
+            </span>
+          </div>
+          <div class="wallet-user-settings">
+            <span class="wallet-text04 notselectable">USER SETTINGS</span>
+            <a href="my-account.html" class="wallet-navlink button">
+              My Account
+            </a>
+            <a href="profile.html" class="wallet-navlink1 button">Profile</a>
+            <a href="security.html" class="wallet-navlink2 button">
+              Privacy & Security
+            </a>
+            <a href="authorized-apps.html" class="wallet-navlink3 button">
+              Authorized Apps
+            </a>
+            <a href="connections.html" class="wallet-navlink4 button">
+              Connections
+            </a>
+          </div>
+          <div class="wallet-billing">
+            <span class="wallet-text05 notselectable">BILLING</span>
+            <a href="premium.html" class="wallet-navlink5 button">Premium</a>
+            <button class="wallet-button button">Wallet</button>
+            <a href="coming-soon.html" class="wallet-navlink6 button">
+              My Card
+            </a>
+          </div>
+        </div>
+        <div class="wallet-screen-sizew">
+          <h1 class="wallet-text06 notselectable">
+            <span class="wallet-text07">Sorry but...</span>
+          </h1>
+          <h1 class="wallet-text08">
+            <span>
+              So sorry, but currently we only support Desktop or any Desktop
+              Sized Screen,
+            </span>
+            <br />
+            <span>
+              this is due to overflow and rendering issues, this might be
+              removed in the future.
+            </span>
+          </h1>
+          <a
+            href="https://accounts.vikkivuk.xyz/r/home?check=false"
+            target="_blank"
+            rel="noreferrer noopener"
+            class="wallet-link button"
+          >
+            Go Home
+          </a>
+        </div>
+        <div id="purchase_menu" class="wallet-purchase-menu">
+          <h1 class="wallet-text12">Purchase eMoney</h1>
+          <button id="purchase_1" type="button" class="wallet-save1 button">
+            $1
+          </button>
+          <button id="purchase_5" type="button" class="wallet-save2 button">
+            $5
+          </button>
+          <button id="purchase_10" type="button" class="wallet-save3 button">
+            $10
+          </button>
+          <button id="purchase_20" type="button" class="wallet-save4 button">
+            $20
+          </button>
+          <button id="purchase_50" type="button" class="wallet-save5 button">
+            $50
+          </button>
+          <button id="purchase_100" type="button" class="wallet-save6 button">
+            $100
+          </button>
+          <button
+            id="purchase_cancel"
+            type="button"
+            class="wallet-save7 button"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+  
+  <script>
+    function spamStop() {
+      console.log(`
+
+
+           .d8888b.  888                       888    
+          d88P  Y88b 888                       888    
+          Y88b.      888                       888    This is a browser feature intended for 
+           "Y888b.   888888  .d88b.  88888b.   888    developers. If someone told you to copy-paste 
+              "Y88b. 888    d88""88b 888 "88b  888    something here to enable a feature 
+                "888 888    888  888 888  888  Y8P    or "hack" someone's account, it is a 
+          Y88b  d88P Y88b.  Y88..88P 888 d88P         scam and will give them access to your 
+           "Y8888P"   "Y888  "Y88P"  88888P"   888    account.
+                                     888              
+                                     888              
+                                     888              
+      `);
+      console.log(`
+
+
+           .d8888b.  888                       888    
+          d88P  Y88b 888                       888    
+          Y88b.      888                       888    This is a browser feature intended for 
+           "Y888b.   888888  .d88b.  88888b.   888    developers. If someone told you to copy-paste 
+              "Y88b. 888    d88""88b 888 "88b  888    something here to enable a feature 
+                "888 888    888  888 888  888  Y8P    or "hack" someone's account, it is a 
+          Y88b  d88P Y88b.  Y88..88P 888 d88P         scam and will give them access to your 
+           "Y8888P"   "Y888  "Y88P"  88888P"   888    account.
+                                     888              
+                                     888              
+                                     888              
+      `);
+      console.log(`
+
+
+           .d8888b.  888                       888    
+          d88P  Y88b 888                       888    
+          Y88b.      888                       888    This is a browser feature intended for 
+           "Y888b.   888888  .d88b.  88888b.   888    developers. If someone told you to copy-paste 
+              "Y88b. 888    d88""88b 888 "88b  888    something here to enable a feature 
+                "888 888    888  888 888  888  Y8P    or "hack" someone's account, it is a 
+          Y88b  d88P Y88b.  Y88..88P 888 d88P         scam and will give them access to your 
+           "Y8888P"   "Y888  "Y88P"  88888P"   888    account.
+                                     888              
+                                     888              
+                                     888              
+      `);
+      console.log(`
+
+
+           .d8888b.  888                       888    
+          d88P  Y88b 888                       888    
+          Y88b.      888                       888    This is a browser feature intended for 
+           "Y888b.   888888  .d88b.  88888b.   888    developers. If someone told you to copy-paste 
+              "Y88b. 888    d88""88b 888 "88b  888    something here to enable a feature 
+                "888 888    888  888 888  888  Y8P    or "hack" someone's account, it is a 
+          Y88b  d88P Y88b.  Y88..88P 888 d88P         scam and will give them access to your 
+           "Y8888P"   "Y888  "Y88P"  88888P"   888    account.
+                                     888              
+                                     888              
+                                     888              
+      `);
+      console.log(`
+
+
+           .d8888b.  888                       888    
+          d88P  Y88b 888                       888    
+          Y88b.      888                       888    This is a browser feature intended for 
+           "Y888b.   888888  .d88b.  88888b.   888    developers. If someone told you to copy-paste 
+              "Y88b. 888    d88""88b 888 "88b  888    something here to enable a feature 
+                "888 888    888  888 888  888  Y8P    or "hack" someone's account, it is a 
+          Y88b  d88P Y88b.  Y88..88P 888 d88P         scam and will give them access to your 
+           "Y8888P"   "Y888  "Y88P"  88888P"   888    account.
+                                     888              
+                                     888              
+                                     888              
+      `);
+    }
+    spamStop();
+  </script>
+</html>
