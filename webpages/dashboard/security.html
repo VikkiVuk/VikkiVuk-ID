@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <title>Privacy & Security</title>
+    <meta
+      property="og:description"
+      content="Configure your privacy and security settings"
+    />
+    <meta property="og:title" content="Privacy & Security" />
+    <meta
+      name="description"
+      content="Configure your privacy and security settings"
+    />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <style data-tag="reset-style-sheet">
+      html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6 {  margin: 0;  padding: 0;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}a {  color: inherit;  text-decoration: inherit;}input {  padding: 2px 4px;}img {  display: block;}html { scroll-behavior: smooth  }
+    </style>
+    <style data-tag="default-style-sheet">
+      html {
+        font-family: Inter;
+        font-size: 16px;
+      }
+
+      body {
+        font-weight: 400;
+        font-style:normal;
+        text-decoration: none;
+        text-transform: none;
+        letter-spacing: normal;
+        line-height: 1.15;
+        color: var(--dl-color-gray-black);
+        background-color: var(--dl-color-gray-white);
+
+      }
+    </style>
+    <link rel="icon" href="/favicon.ico"/>
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      data-tag="font"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.js"
+      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.rawgit.com/placemarker/jQuery-MD5/master/jquery.md5.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie"></script>
+    <script src="https://unpkg.com/@simplewebauthn/browser/dist/bundle/index.umd.min.js"></script>
+    
+    <style>
+      /* Chrome, Safari, Edge, Opera */
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      /* Firefox */
+      input[type=number] {
+        -moz-appearance: textfield;
+      }
+    </style>
+
+    <style>
+      .submit--loading .button__text {
+        visibility: hidden;
+        opacity: 0;
+      }
+
+      .submit--loading::after {
+        content: "";
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        border: 4px solid transparent;
+        border-top-color: #ffffff;
+        border-radius: 50%;
+        animation: button-loading-spinner 1s ease infinite;
+      }
+
+      @keyframes button-loading-spinner {
+        from {
+          transform: rotate(0turn);
+        }
+
+        to {
+          transform: rotate(1turn);
+        }
+      }
+    </style>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div>
+      <link href="./security.css" rel="stylesheet" />
+      <script src="security.js" type="module"></script>
+
+      <div class="security-container">
+        <a
+          href="https://id.vikkivuk.xyz/r/home?check=false"
+          target="_blank"
+          rel="noreferrer noopener"
+          class="security-logout button"
+        >
+          &lt;- Home
+        </a>
+        <div class="security-main">
+          <div class="security-content">
+            <h1 class="security-text notselectable">Privacy &amp; Security</h1>
+            <div class="security-container01 notselectable">
+              <span class="security-text01 notselectable">
+                MULTI-FACTOR AUTHENTICATION
+              </span>
+              <div class="security-container02">
+                <div class="security-container03">
+                  <div class="security-container04">
+                    <h1 class="security-text02 notselectable">Security Keys</h1>
+                    <h1 class="security-text03 notselectable">RECOMMENDED</h1>
+                  </div>
+                  <span class="security-text04 notselectable">
+                    <span>
+                      Security Keys are the most secure form of authentication,
+                      we also recommend adding a backup security key.
+                    </span>
+                  </span>
+                </div>
+                <button id="add_key" type="button" class="security-save button">
+                  Add a key
+                </button>
+                <div id="current_keys" class="security-container05"></div>
+              </div>
+              <div class="security-container06">
+                <div class="security-container07">
+                  <div class="security-container08">
+                    <div class="security-container09">
+                      <div class="security-container10">
+                        <h1 class="security-text06 notselectable">
+                          Authenticator App
+                        </h1>
+                      </div>
+                      <span class="security-text07 notselectable">
+                        <span>
+                          Authenticator apps are the second best thing for
+                          authentication, it is a lot better than email
+                          authentication.
+                        </span>
+                      </span>
+                    </div>
+                    <input
+                      type="checkbox"
+                      id="authenticator_app_auth"
+                      autocomplete="off"
+                      class="security-checkbox"
+                    />
+                    <img
+                      id="authenticator_qr"
+                      alt="image"
+                      src="https://play.teleporthq.io/static/svg/default-img.svg"
+                      class="security-image"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="security-container12">
+                <div class="security-container13">
+                  <div class="security-container14">
+                    <div class="security-container15">
+                      <div class="security-container16">
+                        <h1 class="security-text09 notselectable">
+                          OneTap Auth
+                        </h1>
+                      </div>
+                      <span class="security-text10">
+                        <span>
+                          OneTap sends a login request to your phone and you
+                          just confirm it&apos;s you trying to log in and
+                          that&apos;s all. It&apos;s the most
+                        </span>
+                        <br />
+                        <span>easiest form of authenticaton.</span>
+                      </span>
+                    </div>
+                    <input
+                      type="checkbox"
+                      id="onetap_auth"
+                      autocomplete="off"
+                      class="security-checkbox1"
+                    />
+                    <input
+                      type="text"
+                      value="000001-0001"
+                      disabled
+                      placeholder="123456-1234"
+                      class="security-textinput input"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="security-container18">
+                <div class="security-container19">
+                  <div class="security-container20">
+                    <div class="security-container21">
+                      <div class="security-container22">
+                        <h1 class="security-text14 notselectable">
+                          Email Authentication
+                        </h1>
+                        <h1 class="security-text15 notselectable">
+                          NOT RECOMMENDED
+                        </h1>
+                      </div>
+                      <span class="security-text16 notselectable">
+                        <span>
+                          We do not recommend using Email Authentication as that
+                          would mean that if someone hacks into your email, they
+                          will get access
+                        </span>
+                        <br />
+                        <span>to your VikkiVuk ID.</span>
+                      </span>
+                      <input
+                        type="checkbox"
+                        id="email_auth"
+                        class="security-checkbox2"
+                        autocomplete="off"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="security-container24 notselectable">
+              <span class="security-text20 notselectable">
+                HOW WE USE YOUR DATA
+              </span>
+              <div class="security-container25">
+                <div class="security-container26">
+                  <h1 class="security-text21 notselectable">
+                    Share my data with apps using VikkiVuk Storage
+                  </h1>
+                  <span class="security-text22">
+                    <span>
+                      This setting shares connections, 2fa methods etc... rather
+                      than just sharing the basic information (email, profile,
+                      dob). For example
+                    </span>
+                    <br />
+                    <span>
+                      Wolfie uses those to customize user experience, if you
+                      were to disable this setting you would have to manually
+                      enter data.
+                    </span>
+                  </span>
+                </div>
+                <input
+                  type="checkbox"
+                  id="share_storage_data"
+                  checked="true"
+                  autocomplete="on"
+                  class="security-checkbox3"
+                />
+              </div>
+              <div class="security-container27">
+                <div class="security-container28">
+                  <h1 class="security-text26 notselectable">
+                    Use data to improve our services
+                  </h1>
+                  <span class="security-text27 notselectable">
+                    <span>
+                      This setting allows us to use and process the information
+                      about how you navigate and use our services for analytical
+                      purposes
+                    </span>
+                    <br />
+                    <span>
+                      For example, it allows us to include you in the new
+                      features we test.
+                    </span>
+                  </span>
+                </div>
+                <input
+                  type="checkbox"
+                  id="usage_statistics"
+                  checked="true"
+                  autocomplete="on"
+                  class="security-checkbox4"
+                />
+              </div>
+              <div class="security-container29">
+                <div class="security-container30">
+                  <h1 class="security-text31 notselectable">
+                    Use data to make our services work
+                  </h1>
+                  <span class="security-text32 notselectable">
+                    <span>
+                      We need to store and process some data in order to provide
+                      you the basics of our services, such as your email,
+                      connections, etc...
+                    </span>
+                    <br />
+                    <span>
+                      By using VikkiVuk IDs and our services you allow us
+                      to provide this basic service. You can stop this by
+                      deleting your ID.
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="security-container31 notselectable">
+              <span class="security-text36 notselectable">MY DATA</span>
+              <span class="security-text37 notselectable">
+                <span>
+                  Here you can delete or request a copy of your data. In your
+                  data package you will not receive data from VikkiVuk ID
+                  Storage, but by deleting
+                </span>
+                <br />
+                <span>
+                  your data you will delete the data from VikkiVuk ID
+                  Storage FOREVER.
+                </span>
+                <span></span>
+              </span>
+              <div class="security-container32">
+                <button
+                  type="button"
+                  onclick="this.classList.toggle('submit--loading')"
+                  class="security-button button"
+                  id="request_data"
+                >
+                  <span class="security-text42">Request my Data</span>
+                </button>
+                <button
+                  id="delete_data"
+                  type="button"
+                  onclick="this.classList.toggle('submit--loading')"
+                  class="security-button1 button"
+                >
+                  <span class="security-text43">Delete my Data</span>
+                </button>
+                <button
+                  id="delete_sessions"
+                  type="button"
+                  onclick="this.classList.toggle('submit--loading')"
+                  class="security-button2 button"
+                >
+                  <span class="security-text44">Log out of all sessions</span>
+                </button>
+                <a
+                  href="../password/reset-password.html"
+                  class="security-navlink button"
+                >
+                  <span class="security-text45">Reset Password</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="security-user-settings">
+            <span class="security-text46 notselectable">USER SETTINGS</span>
+            <a href="my-account.html" class="security-navlink1 button">
+              My ID
+            </a>
+            <a href="profile.html" class="security-navlink2 button">Profile</a>
+            <button class="security-button3 button">
+              Privacy &amp; Security
+            </button>
+            <a href="authorized-apps.html" class="security-navlink3 button">
+              Authorized Apps
+            </a>
+            <a href="connections.html" class="security-navlink4 button">
+              Connections
+            </a>
+          </div>
+          <div class="security-billing">
+            <span class="security-text47 notselectable">BILLING</span>
+            <a href="premium.html" class="security-navlink5 button">Premium</a>
+            <a href="wallet.html" class="security-navlink6 button">Wallet</a>
+            <a href="coming-soon.html" class="security-button4 button">
+              My Card
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
