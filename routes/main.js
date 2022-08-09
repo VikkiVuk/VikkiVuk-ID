@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const express = require("express")
-const mail = require("@sendgrid/mail");mail.setApiKey(process.env.sendgrid_api);
+const mail = require("@sendgrid/mail");mail.setApiKey(process.env.SENDGRID_TOKEN);
 const uuid = require("uuid");
 const profileSchema = require("../schemas/PSchema");
 const bcrypt = require("bcrypt");
@@ -8,7 +8,7 @@ const jwt = require("jsonwebtoken");
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 
 router.get("/", express.json(), async (req, res) => {
-  res.sendFile("/app/webpages/home.html");
+  res.redirect("/home.html")
 });
 
 router.post("/login", express.json(), async (req, res, next) => {
@@ -20,9 +20,9 @@ router.post("/login", express.json(), async (req, res, next) => {
             if (truePass) {
                 if (user.account.verified == true) {
                     let jwtToken = jwt.sign(
-                        { alg: "HS256", typ: "JWT", secret: "vikkivuk-accounts-jwting" },
+                        { alg: "HS256", typ: "JWT", secret: "vikkivuk-id-jwting" },
                         JSON.stringify({
-                            iss: "vikkivuk-accounts",
+                            iss: "vikkivuk-id-formerly-accounts",
                             name: user.name,
                             email: user.email,
                             isHuman: true,
@@ -70,13 +70,13 @@ router.post("/register", express.json(), async (req, res, next) => {
         const msg = {
             to: req.body.email,
             from: "hello@vikkivuk.xyz",
-            subject: "Your VikkiVuk Account.",
+            subject: "Your VikkiVuk ID.",
             text:
-                "Hello, it seems like you made an account @ VikkiVuk, if this wasnt you dont worry, you can safely ignore this email. If this was you please enter this code: " +
+                "Hello, it seems like you made a VikkiVuk ID, if this wasnt you dont worry, you can safely ignore this email. If this was you please enter this code: " +
                 code,
         };
 
-        mail.send(msg);
+        await mail.send(msg);
 
         await new profileSchema({
             id: uuidd,

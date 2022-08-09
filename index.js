@@ -1,18 +1,11 @@
+require("dotenv").config({ path: "./.env" })
 const express = require("express");
 const mongoose = require("mongoose");
-const session = require("express-session")
-const MongoStore = require('connect-mongo');
 const app = express();
-let mongopath = process.env.mongopath;
+let mongopath = process.env.MONGOPATH;
 
 mongoose.connect(mongopath, {keepAlive: true, useNewUrlParser: true, useUnifiedTopology: true});
-app.use(session({
-  secret: 'kurac cat',
-  resave: false,
-  saveUninitialized: true,
-  cookie: { secure: true },
-  store: MongoStore.create({mongoUrl: mongopath, autoRemove: 'native', ttl: 1 * 24 * 60 * 60, dbName: "sessions"})
-}))
+
 app.use(express.static(__dirname + "/webpages/dashboard"));
 app.use(express.static(__dirname + "/webpages"));
 app.use(express.urlencoded({ extended: false }));
