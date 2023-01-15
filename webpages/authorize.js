@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  $.post("/user/jwtGet", { jwt: Cookies.get("jwt") }).done((data) => { $("#email").text(data.email); }).fail((data) => { window.location.assign("/login.html?redirect=" + encodeURIComponent(window.location) + ""); });
+  $.post("/user/jwtGet", { jwt: Cookies.get("jwt") }).done((data) => { $("#email").text(data.email); }).fail((data) => { window.location.assign(String("/login.html?redirect=" + encodeURIComponent(window.location))); });
   
   $("#submit").click(function () {
     const password = $("#password").val();

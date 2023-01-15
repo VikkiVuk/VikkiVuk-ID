@@ -164,7 +164,7 @@ router.post("/stripe_webhook", express.raw({type: 'application/json'}), async (r
         case 'payment_intent.succeeded':
             const item = event.data.object;
             if (item.metadata.product == 'wallet_balance') {
-                let amnt = +item.amount / 100
+                let amnt = Number(item.amount) / 100
                 await profileSchema.updateOne({ "account.jwtToken": jwt }, { $inc: { "account.wallet.balance": amnt }})
             }
 
