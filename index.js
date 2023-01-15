@@ -21,4 +21,4 @@ app.use("/payments", require("./routes/payments"))
 app.use("/personalization", require("./routes/personalization"))
 app.use("/r", require("./routes/r"))
 
-app.listen(process.env.PORT || 5000, () => {});
+app.listen(process.env.PORT || 5000);
