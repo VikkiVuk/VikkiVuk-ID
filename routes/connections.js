@@ -300,7 +300,7 @@ router.use("/", express.json(), async (req, res) => {
                         res.status(200).send({msg: "Server-side Authorization Complete",statuscode: 200,code: token});
                     } else {
                         user.connections.authorized_apps.forEach(async(i, id) => {
-                            console.log(i)
+                            
                             if (i.id == service.id) {
                                 res.status(200).send({msg: "Server-side Authorization Complete",statuscode: 200,code: token});
                             } else {

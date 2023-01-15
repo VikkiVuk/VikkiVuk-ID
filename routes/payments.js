@@ -192,7 +192,7 @@ router.post("/stripe_webhook", express.raw({type: 'application/json'}), async (r
             break;
         case 'customer.subscription.deleted':
             const subscriptionn = event.data.object;
-            console.log(subscriptionn)
+            
             await profileSchema.updateOne({ "account.stripe.subscription_id": subscriptionn.id }, { $unset: {"account.stripe": 1}})
 
             break;
@@ -205,7 +205,7 @@ router.post("/stripe_webhook", express.raw({type: 'application/json'}), async (r
             break;
 
         default:
-            console.log(`Unhandled event type ${event.type}`);
+            
     }
 
     res.send();

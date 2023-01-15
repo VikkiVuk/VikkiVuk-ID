@@ -148,7 +148,7 @@ $(document).ready(function () {
     $.post("/auth/securitykey-options", { jwt: Cookies.get("jwt") })
     .done(async(data) => {
       try {
-        console.log(data.excludeCredentials)
+        
         const credential = await authn.startRegistration(data);
         let securitykeyName = prompt("Name your key", "My Key")
 

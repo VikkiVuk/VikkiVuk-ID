@@ -18,7 +18,7 @@ router.get("/oauth/new", express.json(), (req, res) => {
 
 router.post("/oauth/new", express.json(), async (req, res) => {
   let body = await req.body;
-  console.log(body);
+  
   if (body.name && body.scopes && body.redirects) {
     let id = uuid.v4();
     let secret = uuid.v4();
